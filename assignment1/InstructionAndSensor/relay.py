@@ -29,7 +29,7 @@ def on_message(client, userdata, msg): # Func for Sending msg
 def createclient(port):
     client = mqtt.Client()
     client.on_connect = on_connect
-    client.on_message = on_message(port)
+    client.on_message = on_message
     client.connect("ec2-3-25-144-105.ap-southeast-2.compute.amazonaws.com", 1883, 60)
     client.loop_forever()
 
