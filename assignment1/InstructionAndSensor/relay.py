@@ -39,7 +39,7 @@ def lookfordata(port):
             rawserial = ser.readline()
             cookedserial = rawserial.decode('utf-8').strip('\r\n')
 
-            publish.single("ifn649", cookedserial, hostname="ec2-3-25-144-105.ap-southeast-2.compute.amazonaws.com")
+            publish.single("temp", cookedserial, hostname="ec2-3-25-144-105.ap-southeast-2.compute.amazonaws.com")
 
 import threading
 
