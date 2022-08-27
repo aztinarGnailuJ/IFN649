@@ -17,10 +17,13 @@ def on_message(client, userdata, msg): # Func for Sending msg
     # print(msg.topic+" "+str(msg.payload))
     print(f"Instruction {msg.payload.decode('UTF-8')} is being sent to teensy!")
     if(msg.payload.decode('UTF-8') == 'LED_ON'):
+        print('Turning on')
         ser.write(str.encode('LED_ON'))
     elif(msg.payload.decode('UTF-8') == 'LED_OFF'):
+        print('Turning off')
         ser.write(str.encode('BUZZ'))
     elif(msg.payload.decode('UTF-8') == 'BUZZ'):
+        print('Buzzing')
         ser.write(str.encode('BUZZ'))
         
 def createclient(port):
