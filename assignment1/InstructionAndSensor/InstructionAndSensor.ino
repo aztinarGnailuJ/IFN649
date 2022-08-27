@@ -35,7 +35,7 @@ void loop() {
   // put your main code here, to run repeatedly:
 
   if(Serial1.available() > 0){
-    String str = Serial1.readString().substring(1);
+    String str = Serial1.readString().substring(0);
     Serial.println(str);
     if(str == "LED_ON"){
       digitalWrite(ledPin, HIGH);   
@@ -60,6 +60,14 @@ void loop() {
   float hif = dht.computeHeatIndex(f, h);
   float hic = dht.computeHeatIndex(t, h, false);  
 
+
+  Serial.print(h);
+  Serial.print(F(";"));
+  Serial.print(t);
+  Serial.print(F(";"));
+  Serial.print(hic);
+  Serial.println(F(""));
+  
   Serial1.print(h);
   Serial1.print(F(";"));
   Serial1.print(t);

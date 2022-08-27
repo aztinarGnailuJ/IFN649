@@ -21,7 +21,7 @@ def on_message(client, userdata, msg): # Func for Sending msg
         ser.write(str.encode('LED_ON'))
     elif(msg.payload.decode('UTF-8') == 'LED_OFF'):
         print('Turning off')
-        ser.write(str.encode('BUZZ'))
+        ser.write(str.encode('LED_OFF'))
     elif(msg.payload.decode('UTF-8') == 'BUZZ'):
         print('Buzzing')
         ser.write(str.encode('BUZZ'))
@@ -29,7 +29,7 @@ def on_message(client, userdata, msg): # Func for Sending msg
 def createclient(port):
     client = mqtt.Client()
     client.on_connect = on_connect
-    client.on_message = on_message
+    client.on_message = on_message(port)
     client.connect("ec2-3-25-144-105.ap-southeast-2.compute.amazonaws.com", 1883, 60)
     client.loop_forever()
 
