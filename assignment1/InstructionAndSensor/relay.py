@@ -11,10 +11,11 @@ import paho.mqtt.client as mqtt
 def on_connect(client, userdata, flags, rc): # func for making connection
     print("Connected to MQTT")
     print("Connection returned result: " + str(rc) )
-    client.subscribe("ifn649")
+    client.subscribe("instruction")
 
 def on_message(client, userdata, msg): # Func for Sending msg
-    print(msg.topic+" "+str(msg.payload))
+    # print(msg.topic+" "+str(msg.payload))
+    print(f"Instruction {msg.payload} is being sent to teensy!")
     if(msg.payload.decode('UTF-8') == 'LED_ON'):
         ser.write(str.encode('LED_ON'))
     elif(msg.payload.decode('UTF-8') == 'LED_OFF'):
@@ -37,10 +38,8 @@ def lookfordata(port):
         if ser.in_waiting > 0:
             rawserial = ser.readline()
             cookedserial = rawserial.decode('utf-8').strip('\r\n')
-            print(cookedserial)
 
             publish.single("ifn649", cookedserial, hostname="ec2-3-25-144-105.ap-southeast-2.compute.amazonaws.com")
-            print("Done")
 
 import threading
 
