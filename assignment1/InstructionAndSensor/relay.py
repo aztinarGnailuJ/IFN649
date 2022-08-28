@@ -43,7 +43,7 @@ def lookfordata(port):
             cookedserial = rawserial.decode('utf-8').strip('\r\n')
             humidity, temp, hic, moisture = cookedserial.split(';')
 
-            publish.single("Temperature", rawserial, hostname="ec2-3-25-144-105.ap-southeast-2.compute.amazonaws.com")
+            publish.single("Temperature", temp, hostname="ec2-3-25-144-105.ap-southeast-2.compute.amazonaws.com")
             publish.single("Humidity", humidity, hostname="ec2-3-25-144-105.ap-southeast-2.compute.amazonaws.com")
             publish.single("Moisture", moisture, hostname="ec2-3-25-144-105.ap-southeast-2.compute.amazonaws.com")
 

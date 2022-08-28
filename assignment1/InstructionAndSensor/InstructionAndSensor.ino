@@ -71,13 +71,13 @@ void loop() {
   Serial.println(F(",moist"));
   
   Serial1.print(h);
-  Serial1.print(F(",hum;"));
+  Serial1.print(F(";"));
   Serial1.print(t);
-  Serial1.print(F(",temp;"));
+  Serial1.print(F(";"));
   Serial1.print(hic);
-  Serial1.print(F(",hic;"));
+  Serial1.print(F(";"));
   Serial1.print(moisture);
-  Serial1.println(F(",moist"));
+  Serial1.println(F(""));
 
   delay(1000);
 }
