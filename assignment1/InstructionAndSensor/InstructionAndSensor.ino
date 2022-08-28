@@ -58,17 +58,7 @@ void loop() {
   float f = dht.readTemperature(true);
   int moisture = analogRead(soilPin);
   float hif = dht.computeHeatIndex(f, h);
-  float hic = dht.computeHeatIndex(t, h, false);  
-
-
-  Serial.print(h);
-  Serial.print(F(",hum;"));
-  Serial.print(t);
-  Serial.print(F(",temp;"));
-  Serial.print(hic);
-  Serial.print(F(",hic;"));
-  Serial.print(moisture);
-  Serial.println(F(",moist"));
+  float hic = dht.computeHeatIndex(t, h, false);
   
   Serial1.print(h);
   Serial1.print(F(";"));
@@ -79,5 +69,5 @@ void loop() {
   Serial1.print(moisture);
   Serial1.println(F(""));
 
-  delay(1000);
+  delay(2000);
 }
